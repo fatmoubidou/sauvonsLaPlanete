@@ -36,7 +36,7 @@
                 <td><?php echo $value["firstName"]; ?></td>
                 <td><?php echo $value["age"]; ?></td>
                 <td><?php echo $value["city"]; ?></td>
-                <td><?php echo ($value["availability"])?"Disponible":"Occupé"; ?></td>
+                <td><?php echo ($value["availability"])?"Disponible":"Indisponible"; ?></td>
                 <td><a href="benevole.php?action=edit&id=<?php echo $value["id"]; ?>"><i class="fas fa-edit fa-2x"></i></a></td>
                 <td><a href="benevole.php?action=delete&id=<?php echo $value["id"]; ?>"><i class="fas fa-times fa-2x"></i></a></td>
               </tr>

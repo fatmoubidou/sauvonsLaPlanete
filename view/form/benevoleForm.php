@@ -19,7 +19,7 @@
       <label for="availability">Disponibilité</label>
       <select class="form-control" name="availability">
         <option <?php echo (isset($benevole) && $benevole["availability"] == "1")?'selected="selected"':'';  ?> value="1">Disponible</option>
-        <option <?php echo (isset($benevole) && $benevole["availability"] == "0")?'selected="selected"':'';  ?> value="0">Occupé</option>
+        <option <?php echo (isset($benevole) && $benevole["availability"] == "0")?'selected="selected"':'';  ?> value="0">Indisponible</option>
       </select>
     </div>
   </div>

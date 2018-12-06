@@ -9,8 +9,8 @@ if (getOptionCity($db)){
 if (isset($_POST) && !empty($_POST)) {
   //var_dump($_POST);
   $tri = $_POST["tri"];
-  $city = $_POST["city"];
-  $availability = intval($_POST["availability"]);
+  $city = ($_POST["city"]!="0")?$_POST["city"]:NULL;
+  $availability = $_POST["availability"];
 }else {
   $tri = "name";
   $city = NULL;

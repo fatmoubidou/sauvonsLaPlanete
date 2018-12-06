@@ -1,12 +1,22 @@
 <?php
 function getBenevoles($db,$tri,$city,$availability){
   if (!is_null($city) || !is_null($availability)) {$where = "WHERE ";}else {$where = "";}
-  if (!is_null($city)) {$condition1 = "city = :city ";}else{$condition1 = "";}
+  if (!is_null($city)) {
+    $condition1 = "city = :city ";
+    $parameter1 = "'city' => ".$city;
+  }
+  else{
+    $condition1 = "";
+    $parameter1 = NULL;
+  }
   if (!is_null($city) && !is_null($availability)) {$and = "AND ";}else {$and = "";}
   if (!is_null($availability)) {$condition2 = "availability = :availability ";}else{$condition2 ="";}
 
   $requete = $db->prepare('SELECT * FROM benevole '.$where . $condition1 . $and . $condition2.' ORDER BY '.$tri.' asc');
-  $requete->execute(array('availability' => $availability,'city' => $city));
+  if (!is_null($parameter1)) {
+    $requete->execute(array('city' => $city, 'availability' => $availability));
+  } else{$requete->execute(array('availability' => $availability));}
+  //$result = $requete; //Affiche la requete pour les tests
   $result = $requete->fetchAll(PDO::FETCH_ASSOC);
   $requete->closeCursor();
   return $result;
