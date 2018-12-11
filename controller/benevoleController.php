@@ -2,6 +2,8 @@
 require "../model/db.php";
 require "../model/benevolesManager.php";
 require "../service/form.php";
+require "../service/errorMsg.php";
+
 
 if (isset($_GET["id"]) && !empty($_GET["id"])) {
   $id = intval($_GET["id"]);
@@ -31,37 +33,36 @@ if (isset($_GET["action"]) && !empty($_GET["action"])) {
   }
 }
 
+$messages = errorsBenevole();
+$code = "";
 if (isset($_POST)) {
   if (!empty($_POST)) {
     //if (checkValue($_POST)) {
       switch ($_POST["action"]) {
         case 'add':
-          if (addBenevole($db, $_POST)) {
-            //echo "ok add";
-          }else
-            {echo "ko add";}
+          if (addBenevole($db, $_POST))
+            {$code = "3";} //ADD
+          else
+            {$code = "4";}
           break;
         case 'edit':
           if(updateBenevole($db, $_POST))
-            {$benevole = getBenevole($db,$_POST["id"]);
-             //echo "ok";
+            {
+              $benevole = getBenevole($db,$_POST["id"]);
+              $code = "1";//UPDATE
             }
           else
-            {echo "ko update";}
+            {$code = "2";}
           break;
         case 'delete':
-          if (deleteBenevole($db, $_POST["id"])) {
-            //echo "ok delete";
-          }else {
-            echo "ko delete";
-          }
+          if (deleteBenevole($db, $_POST["id"]))
+            {$code = "5";} //DELETE
+          else
+            {$code = "6";}
           break;
       }
-      // code...
     //}
-    // code...
   }
-  // code...
 }
 
 require "../view/benevoleView.php";

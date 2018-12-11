@@ -1,3 +1,20 @@
+<?php
+//Affichage du message de confirmation
+  if ($code) {
+    foreach ($messages as $key => $value) {
+      if ($value["id"] == $code) {
+        $message = $value["msg"];
+      }
+    }
+    if (isset($message)) { ?>
+      <div class="alert alert-success text-center mt-2" role="alert">
+        <?php echo $message; ?>
+      </div>
+    <?php
+    }
+  }
+  else { ?>
+<!-- Affichage du formulaire -->
 <form class="needs-validation" method="post" action="" novalidate>
   <input type="hidden" name="id" value="<?php echo (isset($benevole))?$benevole["id"]:""; ?>">
   <?php if ($action != "delete"): ?>
@@ -51,3 +68,4 @@
     <button name="action" class="<?php echo $buttonClass; ?>" type="submit"  value="<?php echo $buttonAction; ?>" ><?php echo $buttonTitle; ?></button>
   </div>
 </form>
+<?php } ?>

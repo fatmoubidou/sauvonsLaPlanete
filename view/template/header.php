@@ -14,8 +14,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="../public/css/normalize.css">
-  <link rel="stylesheet" href="../public/css/main.css">
+  <link rel="stylesheet" href=<?php echo "http://".$_SERVER['SERVER_NAME']."/Lab/sauvonslaPlanete/public/css/normalize.css"; ?> >
+  <link rel="stylesheet" href=<?php echo "http://".$_SERVER['SERVER_NAME']."/Lab/sauvonslaPlanete/public/css/main.css"; ?> >
+  <!-- <link rel="stylesheet" href="../public/css/normalize.css">
+  <link rel="stylesheet" href="../public/css/main.css"> -->
 </head>
 
 <body class="h-100vh d-flex flex-column justify-content-between">
