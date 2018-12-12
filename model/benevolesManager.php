@@ -51,10 +51,13 @@ function getOptionCity(){
 
 function addBenevole($form){
   $db = getDataBase();
-  $requete = $db->prepare('INSERT INTO benevole (name, firstName, age, availability, comment, street, city)
-                                         VALUES (:name, :firstName, :age, :availability, :comment, :street, :city)');
+  $requete = $db->prepare('INSERT INTO benevole (name, firstName, pseudo, psw, status, age, availability, comment, street, city)
+                                         VALUES (:name, :firstName, :pseudo, :psw, :status, :age, :availability, :comment, :street, :city)');
   $result = $requete->execute(array('name' => $form["name"],
                                     'firstName' => $form["firstName"],
+                                    'pseudo' => $form["pseudo"],
+                                    'psw' => $form["psw"],
+                                    'status' => $form["status"],
                                     'age' => $form["age"],
                                     'availability' => $form["availability"],
                                     'comment' => $form["comment"],
@@ -66,10 +69,13 @@ function addBenevole($form){
 
 function updateBenevole($form){
   $db = getDataBase();
-  $requete = $db->prepare('UPDATE benevole SET name = :name, firstName = :firstName, age = :age, availability = :availability, comment = :comment, street = :street, city = :city WHERE id = :id');
+  $requete = $db->prepare('UPDATE benevole SET name = :name, firstName = :firstName, pseudo = :pseudo, psw = :psw, status = :status, age = :age, availability = :availability, comment = :comment, street = :street, city = :city WHERE id = :id');
   $result = $requete->execute(array('id' => $form["id"],
                                     'name' => $form["name"],
                                     'firstName' => $form["firstName"],
+                                    'pseudo' => $form["pseudo"],
+                                    'psw' => $form["psw"],
+                                    'status' => $form["status"],
                                     'age' => $form["age"],
                                     'availability' => $form["availability"],
                                     'comment' => $form["comment"],

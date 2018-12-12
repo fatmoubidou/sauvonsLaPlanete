@@ -1,5 +1,5 @@
     </main>
-    <footer class="jumbotron jumbotron-fluid mb-0">
+    <footer class="bg-light jumbotron-fluid mb-0">
       <div class="container">
         <p class="lead">FOOTER</p>
       </div>

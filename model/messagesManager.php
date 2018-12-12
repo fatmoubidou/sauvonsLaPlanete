@@ -33,7 +33,7 @@ function addMessage($form){
 
 function updateMessage($form){
   $db = getDataBase();
-  $requete = $db->prepare('UPDATE message SET name = :name, firstName = :firstName, age = :age, availability = :availability, comment = :comment, street = :street, city = :city WHERE id = :id');
+  $requete = $db->prepare('UPDATE message SET object = :object, contents = :contents, dated = :dated, recipient = :recipient, sender = :sender, status = :status WHERE id = :id');
   $result = $requete->execute(array('id' => $form["id"],
                                     'object' => $form["object"],
                                     'contents' => $form["contents"],

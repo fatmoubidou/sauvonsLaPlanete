@@ -21,22 +21,29 @@
 </head>
 
 <body class="h-100vh d-flex flex-column justify-content-between">
-  <header class="jumbotron-fluid bg-light mb-3">
+  <header class="jumbotron-fluid bg-light mb-2">
     <div class="container">
       <h1 class="display-4">Sauvons la planète</h1>
       <p class="lead">Interface d'administration</p>
     </div>
+    <!-- Affichage du menu si User connecté -->
+    <?php if (isLogged()) { ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Les bénévoles</a>
+            <a class="nav-link" <?php setHref("benevoles"); ?>>Les bénévoles</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" <?php setHref("messages"); ?>>Les messages</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Se déconnecter</a>
+            <a class="nav-link">Se déconnecter</a>
           </li>
         </ul>
       </div>
     </nav>
+    <?php } ?>
+
   </header>
     <main class="flex-grow-1">

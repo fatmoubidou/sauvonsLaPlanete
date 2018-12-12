@@ -15,24 +15,47 @@ function getRoutes() {
   return [
     "" => [
       "index",
-      "connexion"
+      "login"
+    ],
+    "login" => [
+      "index",
+      "login"
     ],
     "test" => [
       "index",
       "test"
     ],
     "benevoles" => [
-      "listBenevoles",
-      "affiche"
+      "benevoles",
+      "allBenevoles",
+      "status" => "admin"
     ],
-    "benevoleAdd" => [
-      "benevole",
-      "add"
+    "benevoles/add" => [
+      "benevoles",
+      "add",
+      "status" => "admin"
     ],
-    "benevoleUpdate" => [
-      "benevole",
-      "edit"
-    ]
+    "benevoles/edit" => [
+      "benevoles",
+      "edit",
+      [
+        "id" => ["integer"]
+      ],
+      "status" => "admin"
+    ],
+    "benevoles/delete" => [
+      "benevoles",
+      "delete",
+      [
+        "id" => ["integer"]
+      ],
+      "status" => "admin"
+    ],
+    "messages" => [
+      "messages",
+      "allMessages",
+      "status" => "admin"
+    ],
   ];
 }
  ?>

@@ -20,6 +20,8 @@ function isLogged() {
   if(isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
     return true;
   }
-  return false;
+    return false;
+
+
 }
  ?>

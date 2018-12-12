@@ -11,7 +11,7 @@ function getCurrentRequest() {
   }
   return $request;
 }
-//Fonction pour vérifier qu'un utilisateur a le bon satut pour la route
+//Fonction pour vérifier qu'un utilisateur a le bon statut pour la route
 function checkUserCredential($route) {
   session_start();
   $config = getGlobalConfig();

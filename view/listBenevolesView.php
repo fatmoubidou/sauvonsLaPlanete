@@ -7,7 +7,7 @@
 
   <div class="d-flex justify-content-between mb-2">
     <div >
-      <a href="benevole.php?action=add" class="btn btn-primary">Ajouter</a>
+      <a <?php setHref("benevoles/add"); ?> class="btn btn-primary">Ajouter</a>
     </div>
     <!-- Form table tri form -->
     <?php include "view/form/tableTriForm.php"; ?>
@@ -37,8 +37,8 @@
                 <td><?php echo $value["age"]; ?></td>
                 <td><?php echo $value["city"]; ?></td>
                 <td><?php echo ($value["availability"])?"Disponible":"Indisponible"; ?></td>
-                <td><a href="benevole.php?action=edit&id=<?php echo $value["id"]; ?>"><i class="fas fa-edit fa-2x"></i></a></td>
-                <td><a href="benevole.php?action=delete&id=<?php echo $value["id"]; ?>"><i class="fas fa-times fa-2x"></i></a></td>
+                <td><a <?php setHref("benevoles/edit", ["id"=>$value["id"]]); ?>><i class="fas fa-edit fa-2x"></i></a></td>
+                <td><a <?php setHref("benevoles/delete", ["id"=>$value["id"]]); ?>><i class="fas fa-times fa-2x"></i></a></td>
               </tr>
             <?php }
           }

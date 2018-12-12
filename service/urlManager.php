@@ -26,9 +26,9 @@ function setHref($target, $parameters = false) {
     //Si les paramètre son définis, on les ajoute à la route
     foreach ($parameters as $key => $value) {
       $action .= $key ."=" . $value;
-      if(isset($parameters[$key + 1])) {
-        $action .= "&&";
-      }
+      // if(isset($parameters[$key + 1])) {
+      //   $action .= "&&";
+      // }
     }
   }
   echo "href='$action'";

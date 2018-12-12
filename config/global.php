@@ -4,7 +4,7 @@ function getGlobalConfig() {
   return $config = [
     "protocol" => "",
     "host" => "localhost/Lab/sauvonslaPlanete/",
-    "status" => ["0", "1"],
+    "status" => ["user", "admin"],
     "defaultRoute" => ""
   ];
 }
