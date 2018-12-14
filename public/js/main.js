@@ -1,6 +1,7 @@
 (function() {
   'use strict';
   window.addEventListener('load', function() {
+    if($('#myModal')){$('#myModal').modal('show');}
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.getElementsByClassName('needs-validation');
     // Loop over them and prevent submission
@@ -15,3 +16,8 @@
     });
   }, false);
 })();
+
+
+// $(window).load(function(){
+//   $('#myModal').modal('show');
+//    });
