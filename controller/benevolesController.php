@@ -4,8 +4,6 @@ require "model/benevolesManager.php";
 require "service/form.php";
 require "service/errorMsg.php";
 
-
-
 function allBenevoles(){
   if (getOptionCity()){
     $listCity = getOptionCity(); //select city tri
@@ -33,55 +31,52 @@ function allBenevoles(){
 
 
 function add(){
-  $action = "add";
-  $buttonAction = $action;
-  $messages = errorsBenevole();
-  $code = "";
+  $action = "add"; //pour choix du formulaire
   $title = "Ajout";
   $buttonTitle = "Ajouter";
   $buttonClass = "btn btn-primary";
-  if (isset($_POST)) {
-    if (!empty($_POST)) {
-      if (addBenevole($_POST))
-        {$code = "3";} //ADD
-      else
-        {$code = "4";}
-    }
+  if (isset($_POST) && !empty($_POST)) {
+    if (addBenevole($_POST))//ADD
+        {
+          array_push($_SESSION["codeMsg"], "3"); //ajoute le code msg à la session code
+          redirectTo("benevoles");
+        }
+    else
+        {
+          array_push($_SESSION["codeMsg"], "4");
+          redirectTo("benevoles");
+        }
   }
   require "view/benevoleView.php";
 }
 
 function edit(){
   $action = "edit";
-  $buttonAction = $action;
-  $messages = errorsBenevole();
-  $code = "";
   $title = "Modification";
-  if (isset($_GET["id"]) && !empty($_GET["id"])) {
-    $id = intval($_GET["id"]);
-  }
-  $benevole = getBenevole($id);
   $buttonTitle = "Enregistrer";
   $buttonClass = "btn btn-primary";
-  if (isset($_POST)) {
-    if (!empty($_POST)) {
-      if(updateBenevole($_POST))
+  if (isset($_GET["id"]) && !empty($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $benevole = getBenevole($id);
+  }
+
+  if (isset($_POST) && !empty($_POST)) {
+      if(updateBenevole($_POST))//UPDATE
         {
-          $benevole = getBenevole($_POST["id"]);
-          $code = "1";//UPDATE
+          array_push($_SESSION["codeMsg"], "1");
+          redirectTo("benevoles");
         }
       else
-        {$code = "2";}
-    }
+        {
+          array_push($_SESSION["codeMsg"], "2");
+          redirectTo("benevoles");
+        }
   }
   require "view/benevoleView.php";
 }
 
 function delete(){
   $action = "delete";
-  $buttonAction = $action;
-  $messages = errorsBenevole();
-  $code = "";
   $title = "Suppression";
   if (isset($_GET["id"]) && !empty($_GET["id"])) {
     $id = intval($_GET["id"]);
@@ -89,13 +84,17 @@ function delete(){
   $benevole = getBenevole($id);
   $buttonTitle = "Supprimer";
   $buttonClass = "btn btn-warning";
-  if (isset($_POST)) {
-    if (!empty($_POST)) {
-      if (deleteBenevole($_POST["id"]))
-        {$code = "5";} //DELETE
-      else
-        {$code = "6";}
-    }
+  if (isset($_POST) && !empty($_POST)) {
+    if (deleteBenevole($_POST["id"]))//DELETE
+        {
+          array_push($_SESSION["codeMsg"], "5");
+          redirectTo("benevoles");
+        }
+    else
+        {
+          array_push($_SESSION["codeMsg"], "6");
+          redirectTo("benevoles");
+        }
   }
   require "view/benevoleView.php";
 }

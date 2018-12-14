@@ -23,26 +23,43 @@
 <body class="h-100vh d-flex flex-column justify-content-between">
   <header class="jumbotron-fluid bg-light mb-2">
     <div class="container">
-      <h1 class="display-4">Sauvons la planète</h1>
+      <div class="d-flex justify-content-between">
+        <h1 class="display-4">Sauvons la planète</h1>
+        <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])): ?>
+          <p class="mt-3"><i class="fas fa-user"></i> <?php echo $_SESSION["user"]["firstName"]." ".$_SESSION["user"]["name"]; ?></p>
+        <?php endif; ?>
+
+      </div>
+
       <p class="lead">Interface d'administration</p>
     </div>
     <!-- Affichage du menu si User connecté -->
     <?php if (isLogged()) { ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" <?php setHref("benevoles"); ?>>Les bénévoles</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" <?php setHref("messages"); ?>>Les messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Se déconnecter</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <?php if ($_SESSION["user"]["status"] === "admin") { ?>
+              <li class="nav-item active">
+                <a class="nav-link" <?php setHref("benevoles"); ?>>Les bénévoles</a>
+              </li>
+            <?php } ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" <?php setHref("messages"); ?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Les messages
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" <?php setHref("messages"); ?>>Reçus</a>
+                <a class="dropdown-item" <?php setHref("messages/archived"); ?>>Archivés</a>
+                <a class="dropdown-item" <?php setHref("messages/send"); ?>>Envoyer un message</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" <?php setHref("logout"); ?>>Se déconnecter</a>
+            </li>
+          </ul>
+        </div>
+</nav>
+
     <?php } ?>
 
   </header>

@@ -25,6 +25,7 @@ function getRoutes() {
       "index",
       "test"
     ],
+    // BENEVOLES
     "benevoles" => [
       "benevoles",
       "allBenevoles",
@@ -51,11 +52,50 @@ function getRoutes() {
       ],
       "status" => "admin"
     ],
-    "messages" => [
+    // MESSAGES
+    "messages" => [ //Les messages reçus
       "messages",
       "allMessages",
-      "status" => "admin"
+      "status" => "user"
     ],
+    "messages/archived" => [ //Les messages archivés
+      "messages",
+      "allArchived",
+      "status" => "user"
+    ],
+    "messages/send" => [ //ENVOYER un message
+      "messages",
+      "send",
+      "status" => "user"
+    ],
+    "messages/read" => [
+      "messages",
+      "read",
+      [
+        "id" => ["integer"]
+      ],
+      "status" => "user"
+    ],
+    "messages/delete" => [
+      "messages",
+      "delete",
+      [
+        "id" => ["integer"]
+      ],
+      "status" => "user"
+    ],
+    "messages/setArchived" => [
+      "messages",
+      "archived",
+      [
+        "id" => ["integer"]
+      ],
+      "status" => "user"
+    ],
+    "logout" => [
+      "index",
+      "deconnect"
+    ]
   ];
 }
  ?>

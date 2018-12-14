@@ -7,7 +7,8 @@ function initializeAnonymousSession($answers) {
 //Fonction de démarrage standard d'une session utilisateur
 function initializeUserSession($user) {
   session_start();
-  $_SESSION["user"] = $user;
+  $_SESSION["user"] = $user; //session benevoles
+  $_SESSION["codeMsg"] =[]; //session des codes message succes ou erreur
 }
 //Fonction de déconnexion
 function logout() {

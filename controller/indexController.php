@@ -16,7 +16,12 @@ function login() {
         if (loginBenevole($_POST)) {
           $benevole = loginBenevole($_POST);
           initializeUserSession($benevole);
-          redirectTo("benevoles");
+          if ($_SESSION["user"]["status"] === "admin") {
+            redirectTo("benevoles");
+          }else {
+            redirectTo("messages");
+          }
+
         }
         else {
           $code = "1";
@@ -28,7 +33,13 @@ function login() {
 }
 
 
+
  function test() {
    echo "test";
+ }
+
+ function deconnect(){
+   logout();
+   redirectTo("login");
  }
  ?>

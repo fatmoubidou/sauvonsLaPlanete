@@ -1,20 +1,4 @@
-<?php
-//Affichage du message de confirmation
-//var_dump($_POST);
-  if ($code) {
-    foreach ($messages as $key => $value) {
-      if ($value["id"] == $code) {
-        $message = $value["msg"];
-      }
-    }
-    if (isset($message)) { ?>
-      <div class="alert alert-success text-center mt-2" role="alert">
-        <?php echo $message; ?>
-      </div>
-    <?php
-    }
-  }
-  else { ?>
+<?php //var_dump($_POST); ?>
 <!-- Affichage du formulaire -->
 <form class="needs-validation" method="post" action="" novalidate>
   <input type="hidden" name="id" value="<?php echo (isset($benevole))?$benevole["id"]:""; ?>">
@@ -48,8 +32,8 @@
     <div class="col-md-2 mb-3">
       <label for="status">Statut</label>
       <select class="form-control" name="status">
-        <option <?php echo (isset($benevole) && $benevole["status"] == "0")?'selected="selected"':'';  ?> value="0">User</option>
-        <option <?php echo (isset($benevole) && $benevole["status"] == "1")?'selected="selected"':'';  ?> value="1">Admin</option>
+        <option <?php echo (isset($benevole) && $benevole["status"] == "user")?'selected="selected"':'';  ?> value="user">User</option>
+        <option <?php echo (isset($benevole) && $benevole["status"] == "admin")?'selected="selected"':'';  ?> value="admin">Admin</option>
       </select>
     </div>
   </div>
@@ -83,7 +67,6 @@
     </div>
   <?php  endif; ?>
   <div class="d-flex justify-content-end mb-2">
-    <button name="action" class="<?php echo $buttonClass; ?>" type="submit"  value="<?php echo $buttonAction; ?>" ><?php echo $buttonTitle; ?></button>
+    <button class="<?php echo $buttonClass; ?>" type="submit"><?php echo $buttonTitle; ?></button>
   </div>
 </form>
-<?php } ?>
